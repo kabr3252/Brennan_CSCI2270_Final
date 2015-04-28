@@ -1,0 +1,9 @@
+Trumpet,brass,Has the highest register in the brass family. It's among the oldest musical instrument dating back to at least 1500 BC. 
+Alto Saxaphone,woodwind,Smaller than a tenor but larger than a soprano saxophone. Commonly used in classical and jazz music.
+Trombone,brass,Has a telescoping slide mechanism that varies the length of the instrument to change pitch.
+Flute,woodwind,Does not require a reed. There have been flutes found dating back to 40,000 years ago.
+Clarinet,woodwind,Has a single reed mouthpiece, a stright cylindrical tube and a flaring bell. 
+Triangle,percussion,An idiophone, consisting of a bar of metal bent into the shape of a triangle.
+Bass Drum,percussion,A large drum that produces a note of low definite or indefinite pitch. 
+Tuba,brass,The largest and lowest pittched instrument in the brass family. 
+Violin,other,Part of the string family, usually has four strings tuned in perfect fifths.
