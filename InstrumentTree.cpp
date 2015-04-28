@@ -20,6 +20,12 @@ void InstrumentTree::printInstrumentInventory()
 Function Description:
 This method calls the printInstrumentInventory function that takes a node. Calls the
 private print function using the root of the tree.
+
+Example: 
+printInstrumentInventory;
+
+Precondition: The binary search tree has been initialized and created.
+Postcondition: The list of instruments is printed.
 */
 void InstrumentTree::printInstrumentInventory()
 {
@@ -27,13 +33,29 @@ void InstrumentTree::printInstrumentInventory()
 	node = root; //create new node that equals temp
 	printInstrumentInventory(node); //call the print function that's private
 }
+/*
+Function prototype:
+void InstrumentTree::addInstrumentNode(string, string, string)
+
+Function Description:
+This method adds instruments to the tree. It checks to see if the user enetered a valid 
+instrument type before adding it to the tree. If the user doesn't enter a valid type nothing 
+is added to the tree.
+
+Example:
+Binary Search Tree instrumentTree
+instrumentTree->(Trumpet, brass, The highest voiced brass instrument.);
+
+Precondition: The instrumentTree has already been created.  User enters valid variables.
+Postcondition: Movie added to the tree, as long as the correct variables were inputed.
+*/
 void InstrumentTree::addInstrumentNode(string name, string type, string info)
 {
 	InstrumentNode *added = new InstrumentNode(name, type, info); //create new node with info read in
 	InstrumentNode *temp = NULL;
 	InstrumentNode *parent = NULL; //create temp nodes
 	// put the name of instruments into different vectors based on the type
-	// of instrument it is
+	// of instrument it is, this is used later when printing instruments by type
 	if(type == "brass") //brass instruments
 	{
 		brass.push_back(added->name);
@@ -90,6 +112,22 @@ void InstrumentTree::addInstrumentNode(string name, string type, string info)
 		}
 	}
 }
+/*
+Function prototype:
+void InstrumentTree::findInstrument(string name)
+
+Function description:
+This method creates a temp node that is set equal to the root, it then calls the 
+searchInstrumentTree function using the temp node and name of instrument the user 
+wants to find to find the correct instrument node. If the node is found the method then prints 
+out the information for the instrument.
+
+Example:
+instrumentTree->findInstrument(Trumpet);
+
+Precondition: User inputs a string.
+Postcondition: Prints the instrument information or lets the user know the instrument was not found.
+*/
 void InstrumentTree::findInstrument(string name)
 {
 	InstrumentNode* temp;
@@ -109,6 +147,19 @@ void InstrumentTree::findInstrument(string name)
 		cout << "Information about instrument: " << foundInstrument->info << endl;
 	}
 }
+/*
+Function prototype:
+void InstrumentTree::printInstrumentInventory(node)
+
+Function description:
+This recursive method prints out the name of all the instruments in the binary search tree.
+
+Example: 
+printInstrumentInventory(temp);
+
+Precondition: Must be called by another function and be called with a valid node.
+Postcondition: Prints the entire tree.
+*/
 void InstrumentTree::printInstrumentInventory(InstrumentNode* node)
 {
 	if(node->leftChild!= NULL)
@@ -121,6 +172,20 @@ void InstrumentTree::printInstrumentInventory(InstrumentNode* node)
         printInstrumentInventory(node->rightChild); //seaches and prints down right branch
     }
 }
+/*
+Function prototype:
+InstrumentNode* InstrumentTree::searchInstrumentTree(node, string)
+
+Function description:
+This method searches the tree for a instrument with the same name the user inputed to search for.
+
+Example:
+foundInstrument = searchInstrumentTree(temp, Trumpet)
+
+Precondition: Must be called with a node and a string variable.
+Postcondition: Returns the node of the found instrument, if instrument is not found
+it return an empty node.
+*/
 InstrumentNode* InstrumentTree::searchInstrumentTree(InstrumentNode* node, string name)
 {
 	if(node == NULL) //if tree is empty
