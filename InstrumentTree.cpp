@@ -212,61 +212,102 @@ void InstrumentTree::findType(string wantedType)
 {
 	printType(wantedType);
 }
+/*
+Function prototype:
+void InstrumentTree::printType(string)
+
+Function description:
+This method prints out all the instruments of the same type that have been read into the
+binary search tree. It checks to see if the wanted type is the same as the vectors the instruments
+have been divided into, if it's not it let's the user know the type they entered was not valid.
+
+Example:
+printType(brass);
+
+Precondition: Elements have been read into the binary search tree.
+Postcondition: If valid, instruments of the same type are printed.
+*/
 void InstrumentTree::printType(string wantedType)
 {
-	if(wantedType == "brass")
+	if(wantedType == "brass") // if the type equals brass print the brass vector
 	{
 		for(int i=0; i < brass.size(); i++)
 		{
 			cout << brass[i] << endl;
 		}
 	}
-	else if(wantedType == "woodwind")
+	else if(wantedType == "woodwind") // if the type equals woodwind print the woodwind vector
 	{
 		for(int i=0; i < woodwind.size(); i++)
 		{
 			cout << woodwind[i] << endl;
 		}
 	}
-	else if(wantedType == "percussion")
+	else if(wantedType == "percussion") // if the type equals percussion print the percussion vector
 	{
 		for(int i=0; i < percussion.size(); i++)
 		{
 			cout << percussion[i] << endl;
 		}
 	}
-	else if(wantedType == "other")
+	else if(wantedType == "other") // if the type equals other print the other vector
 	{
 		for(int i=0; i < other.size(); i++)
 		{
 			cout << other[i] << endl;
 		}
 	}
-	else
+	else // if none of the types match do not print any vector
 	{
 		cout << "Not a valid type." << endl;
 	}
 }
+/*
+Function prototype:
+void InstrumentTree::addFavorite(string)
+
+Function description:
+This method adds an instument to the favorites vector if it is found in the instrumentTree.
+
+Example:
+intsrumentTree->addFavorite(Trumpet);
+
+Precondition: Search tree must already be initialized.
+Postcondition: If a valid instrument, the instrument is added to the favorites vector.
+*/
 void InstrumentTree::addFavorite(string name)
 {
 	InstrumentNode* temp;
 	InstrumentNode* foundInstrument = NULL;
 	temp = root;
 	foundInstrument = searchInstrumentTree(temp, name); //call search instrument function which returns a node
-	if(foundInstrument == NULL)
+	if(foundInstrument == NULL) // if node is NULL the instrument wasn't found
 	{
 		cout << "Could not find instrument." << endl;
 	}
 	else
 	{
-		favorites.push_back(foundInstrument->name);
+		favorites.push_back(foundInstrument->name); // if found add to the favorites vector
 	}
 }
+/*
+Function Prototype: 
+void InstrumentTree::deleteFavorite(string);
+
+Function description:
+Deletes an instrument from the favorites vector.
+
+Example:
+instrumentTree->deleteFavorite(Trumpet)
+
+Precondition: Must have an instrument that can be deleted, if not the function does nothing.
+Postcondition: The instrument is deleted from the favorites vector.
+*/
 void InstrumentTree::deleteFavorite(string name)
 {
 	for(int i = 0; i < favorites.size(); i++)
 	{
-		if(favorites[i] == name)
+		if(favorites[i] == name) // instrument is found, delete from the list
 		{
 			cout << "Deleteing " << favorites[i] << " from favorites list." << endl;
 			favorites.erase(favorites.begin()+i);
@@ -275,15 +316,41 @@ void InstrumentTree::deleteFavorite(string name)
 	}
 	cout << "Instrument not found" << endl;
 }
+/*
+Function prototype:
+void InstrumentTree::printFavorite()
+
+Function Description:
+Prints out all the instruments in the favorites vector.
+
+Example:
+instrumentTree->printFavorite();
+
+Precondition: Favorites vector has been initialized.
+Postcondition: Favorites printed if there are instruments in the list.
+*/
 void InstrumentTree::printFavorite()
 {
 	cout << "Favorites List" << endl;
 	cout << "==========" << endl;
-	for(int i = 0; i < favorites.size(); i++)
+	for(int i = 0; i < favorites.size(); i++) // loop through favorites vector and print out all isntruments
 	{
 		cout << favorites[i] << endl;
 	}
 }
+/*
+Function prototype:
+void InstrumentTree::learnAbtInstrument(string)
+
+Function description:
+Prints information about the desired instrument.
+
+Example:
+instrumentTree->learnAbtInstrument(Trumpet);
+
+Preconditions: instrumentTree has been created.
+Postconditions: Information about a valid instrument is printed.
+*/
 void InstrumentTree::learnAbtInstrument(string name)
 {
 	InstrumentNode* temp;
@@ -300,12 +367,39 @@ void InstrumentTree::learnAbtInstrument(string name)
 		cout << foundInstrument->info << endl;
 	}
 }
+/*
+Function prototype:
+int InstrumentTree::countInstrumentList()
+
+Function description:
+Calls the countInstruments function with the root node of the instrumentTree.
+
+Example:
+instrumentTree->countInstrumentList();
+
+Preconditions: instrumentTree has already been created.
+Postcondition: Returns the number of nodes in the instrumentTree.
+*/
 int InstrumentTree::countInstrumentList()
 {
 	int count = countInstrumentList(root);
 	
 	return count;
 }
+/*
+Function prototype: 
+int InstrumentTree::countInstrumentList(*node)
+
+Function Description:
+Recursively calls itself in order to travel down all branches of the instrumentTree. 
+For every node it adds one to the counter.
+
+Example:
+countInstrumentList(root);
+
+Preconditions: Must be called from another function.
+Postcondition: Returns an integer of the total number of nodes in the tree.
+*/
 int InstrumentTree::countInstrumentList(InstrumentNode *node)
 {
 	if(node == NULL)
