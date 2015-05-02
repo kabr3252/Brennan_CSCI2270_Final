@@ -287,7 +287,23 @@ void InstrumentTree::addFavorite(string name)
 	}
 	else
 	{
-		favorites.push_back(foundInstrument->name); // if found add to the favorites vector
+	//variable to keep track of if the instrument is in the favorites list already
+		bool foundInFavorites = false;
+		//loop through favorites
+		for(int i = 0; i < favorites.size(); i++)
+		{
+			if(favorites[i] == name)
+			{
+				cout<<"Instrument already in favorites list."<<endl;
+				foundInFavorites = true;
+			}
+		}
+		//add to favorites if the instrument is not already on the list
+		if(foundInFavorites == false)
+		{
+			favorites.push_back(foundInstrument->name); // if found add to the favorites vector
+		}	
+	
 	}
 }
 /*
