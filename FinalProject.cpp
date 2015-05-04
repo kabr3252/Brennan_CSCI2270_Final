@@ -8,11 +8,13 @@
 #include <string>
 #include <cstdlib>
 #include <vector>
+#include <string>
 #include "InstrumentTree.h"
 
 using namespace std;
 
 string printMenu();
+string capitalize(string);
 
 int main(int argc, char* argv[])
 {
@@ -61,6 +63,7 @@ int main(int argc, char* argv[])
 			cout << "Enter instrument name:" << endl;
 			string name = "";
 			getline(cin, name);
+			name = capitalize(name);
 			cout << "Enter instrument type, choose from brass, percussion, woodwind, or other:" << endl;
 			string type = "";
 			getline(cin, type);
@@ -140,5 +143,14 @@ string printMenu()
 	cout << "6. Count number of instrument in list" << endl;
 	cout << "7. Quit" << endl;
 	getline(cin, input);
+	return input;
+}
+
+string capitalize(string input)
+{
+	if (input[0] > 90)
+	{
+		input[0]=input[0]-32;
+	}
 	return input;
 }
